@@ -1,0 +1,21 @@
+#Love calculator
+print("Welcome to the Love Calculator!")
+name1 = input("What is your name? \n")
+name2 = input("What is their name? \n")
+#Main code using if and elif statements
+name1_to_lower = name1.lower()
+name2_to_lower = name2.lower()
+first_number_inpercent = name1_to_lower.count('t') + name2_to_lower.count('t') + name1_to_lower.count('r') + name2_to_lower.count('r')+ name1_to_lower.count('u') + name2_to_lower.count('u') + name1_to_lower.count('e') + name2_to_lower.count('e')
+second_number_inpercent = name1_to_lower.count('l') + name2_to_lower.count('l') + name1_to_lower.count('o') + name2_to_lower.count('o')+ name1_to_lower.count('v') + name2_to_lower.count('v') + name1_to_lower.count('e') + name2_to_lower.count('e')
+total_love_percent = str(first_number_inpercent)+""+str(second_number_inpercent)
+total_love_percent_to_int = int(total_love_percent)
+if total_love_percent_to_int <= 10 or total_love_percent_to_int > 90:
+  print("your score is "+total_love_percent+", you go together like coke and mentos.")
+elif total_love_percent_to_int >10 and total_love_percent_to_int <=30:
+  print("your score is "+total_love_percent+", Your love is like that which a parent with a newborn baby feels for sleep – distant and beyond consideration.")
+elif total_love_percent_to_int >= 40 and total_love_percent_to_int <= 50:
+  print("your score is "+total_love_percent+",Your love is comparable to rush hour traffic. Slow and frustrating, but possible to navigate through persistence and sheer force of will.")   
+elif total_love_percent_to_int > 50 and total_love_percent_to_int <70:
+  print("your score is "+total_love_percent+", There's probably something there. Just make sure your presence is known so your feelings don't get trampled like a 4'8 NBA player.")
+elif total_love_percent_to_int >=70 and total_love_percent_to_int <= 80:
+  print("your score is "+total_love_percent+", Good enough. Might as well check love off your list of things society believes you should've accomplished by now.")
