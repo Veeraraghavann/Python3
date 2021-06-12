@@ -1,0 +1,16 @@
+
+def paint_calc(height, width, cover):
+  totalcan = 0
+  area = height * width
+  totalcan = area / cover
+  if totalcan % 2 == 0:
+    print(f"Total cans required is {totalcan}")
+  else:
+    totalcan = area // cover
+    totalcan+=1
+    print(f"Total cans required is {totalcan}")
+      
+test_h = int(input("Height of wall: "))
+test_w = int(input("Width of wall: "))
+coverage = 5
+paint_calc(height=test_h, width=test_w, cover=coverage)
