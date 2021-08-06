@@ -1,0 +1,29 @@
+from art import logo
+import random
+print(logo)
+attempts = 10
+def play():
+ level = input("Choose a difficulty. Type 'easy' or 'hard': ")
+ lives = attempts 
+ if level == "hard":
+   lives = attempts - 5
+ print(f"You have {lives} attempts remaining to guess the number.")
+ number = random.randint(0,100)
+ while lives != 0:
+   guessed_number = int(input("Make a guess:"))
+   if guessed_number > number:
+     lives = lives - 1
+     print("Too high")
+     print(f"You have {lives} attempts remaining to guess the number")
+   elif guessed_number < number:
+     lives = lives - 1
+     print("Too low")
+     print(f"You have {lives} attempts remaining to guess the number")     
+   else:
+     print(f"You got it! The answer was {number}")
+     break
+ if lives == 0:
+    print("You lost")
+print("Welcome to the Number Guessing Game!")
+print("I am thinking of a number between 1 and 100")
+play()
