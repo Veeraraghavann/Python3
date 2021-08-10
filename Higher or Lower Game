@@ -1,0 +1,46 @@
+from art import logo,vs
+from game_data import data
+import random
+from replit import clear
+def name_format(C):
+  d = ""
+  for datab in C.values():
+    if type(datab) != int: 
+     d+=" "+datab
+  return d
+def result_loop(D,E,F):
+  d = 0
+  e = 0
+  f = F.lower()
+  for num in D.values():
+    if type(num) == int:
+      d = num
+  for num in E.values():
+    if type(num) == int:
+      e = num
+  #print(d)
+  #print(e)
+  if d > e:
+    return f == 'a'
+  else:
+    return f == 'b'
+print(logo)
+A=random.choice(data)
+play = True
+score = 0
+while play:
+  B=random.choice(data)
+  #print(A)
+  print(f"Compare A: {name_format(A)}")
+  print(vs)
+  print(f"Against B: {name_format(B)}")
+  user_input = input("Who has more followers? Type 'A' or 'B': ")
+  play = result_loop(A,B,user_input)
+  if play == True:
+    score +=1
+    clear()
+    print(logo)
+    print(f"You're right! score : {score}")
+  else: 
+    print(f"Your score is {score} and You are out of game")
+  A=B
