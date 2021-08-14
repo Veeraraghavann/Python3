@@ -1,0 +1,122 @@
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+
+
+def calculate_price(user_value):
+    if user_value != 'report':
+        print("Please insert coins")
+        quart = int(input("how many quarters? "))
+        dime = int(input("how many dimes? "))
+        nickel = int(input("how many nickels? "))
+        penny = int(input("how many pennies?: "))
+        total = quart * 0.25 + dime * 0.10 + nickel * 0.05 + penny * 0.01
+        return total
+
+
+def resource_update(menu):
+    if menu == 'espresso':
+        resources['water'] -= 50
+        resources['coffee'] -= 18
+    elif menu == 'latte':
+        resources['water'] -= 200
+        resources["milk"] -= 150
+        resources['coffee'] -= 24
+    else:
+        resources['water'] -= 250
+        resources["milk"] -= 100
+        resources['coffee'] -= 24
+
+
+def resource_check(menu):
+    if menu == 'espresso':
+        if resources['water'] >= 50 and resources['coffee'] >= 18:
+         return True
+    elif menu == 'latte':
+        if resources['water'] >= 200 and resources["milk"] >= 150 and resources['coffee'] >= 24:
+            return True
+    else:
+        if resources['water'] >= 250 and resources["milk"] >= 100 and resources['coffee'] >= 24:
+            return True
+
+
+#TODO 1. 3 Flavours
+
+
+def flavours(user_input, dollars):
+    if resource_check(user_input) == True or user_input == 'report':
+        user_paid = calculate_price(user_input)
+        total_money = dollars
+        if user_input == 'espresso' and user_paid > 1.5:
+            if user_paid > 1.5:
+                balance = user_paid - 1.5
+                print(f"Here is your balance ${balance}")
+            resource_update(user_input)
+            print("espresso coffee")
+        elif user_input == 'latte' and user_paid > 2.5:
+            if user_paid > 2.5:
+                balance = user_paid - 2.5
+                print(f"Here is your balance ${balance}")
+            resource_update(user_input)
+            print("Latte coffee")
+        elif user_input == 'cappuccino' and user_paid > 3.0:
+            if user_paid > 3.0:
+                balance = user_paid - 3.0
+                print(f"Here is your balance ${balance}")
+            resource_update(user_input)
+            print("Cappuccino")
+        elif user_input == 'report':
+            print("Report is generating...")
+            for r, s in resources.items():
+                print(r, s)
+            print(f"Money: {total_money}")
+        else:
+            print("Sorry that's not enough money. Money refunded ")
+    else:
+        print("Not Enough Resources")
+
+
+play = True
+money = 0
+while play:
+    user_choice = input("What would you like? (espresso/latte/cappuccino): ")
+    if user_choice == 'espresso':
+        money += 1.5
+    elif user_choice == 'latte':
+        money += 2.5
+    elif user_choice == 'cappuccino':
+        money += 3.0
+    elif user_choice == 'off':
+        print("Coffee Machine Under Maintenance")
+        break
+    else:
+        money += 0
+    flavours(user_choice, money)
